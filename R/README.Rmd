@@ -85,14 +85,6 @@ How to run
 
 4. Upload the file ```outputFolder_<HospitalName>.zip``` in the output folder to the study coordinator:
 
-History
-===========
-Version 2: 2023년 12월 14일 배포
-Update: 에러 및 sqlrender 기반으로 코드 수정
-
-Version 2: 2023년 12월 21 배포
-Update: 에러 코드 수정
-
 License
 =======
 The hirafqs package is licensed under Apache License 2.0
@@ -108,4 +100,8 @@ Unknown
 
 
 
+Version 2: 2023년 12월 14일 배포
+Update: 에러 및 sqlrender 기반으로 코드 수정
 
+Version 2: 2023년 12월 21 배포
+Update: 에러 코드 수정

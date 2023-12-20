@@ -1,9 +1,9 @@
-atlasId,atlasName,cohortId,name
-1,PC ADT Target (ADT group),1,PC_ADT_Target_(ADT_group)
-2,PC ADT Comparator (Non-ADT group),2,PC_ADT_Comparator_(Non-ADT_group)
-3,Dementia,3,Dementia
-4,Alzheimer's dementia,4,Alzheimer's_dementia
-5,Vascular dementia,5,Vascular_dementia
-6,Other dementia,6,Other_dementia
-7,Parkinson's disease,7,Parkinson's_disease
-8,Index date,8,Index_date
+"","X","atlasId","atlasName","cohortId","name","tableName"
+"1",1,1,"PC ADT Target (ADT group)",1,"PC_ADT_Target_(ADT_group)","TARGET"
+"2",2,2,"PC ADT Comparator (Non-ADT group)",2,"PC_ADT_Comparator_(Non-ADT_group)","COMPARATOR"
+"3",3,3,"Dementia",3,"Dementia","dementia"
+"4",4,4,"Alzheimer's dementia",4,"Alzheimer's_dementia","dementia_AD"
+"5",5,5,"Vascular dementia",5,"Vascular_dementia","dementia_VD"
+"6",6,6,"Other dementia",6,"Other_dementia","dementia_other"
+"7",7,7,"Parkinson's dementia",7,"Parkinson's_dementia","parkinson"
+"8",8,8,"Index date",8,"Index_date","index_date"
