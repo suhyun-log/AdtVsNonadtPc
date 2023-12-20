@@ -46,7 +46,8 @@ How to run
 
 3. You can execute the study by modifying and using the code below. For your convenience, this code is also provided under `extras/CodeToRun.R`:
 
-	```r
+
+```r
 	######################################## Setting ########################################
   # 1. Set working directory 
   getwd()
@@ -96,7 +97,8 @@ How to run
   #################################### Subgroup analysis ####################################
   under70 <- cohort %>% filter(person_age <70); result2 <- matching_psm(under70); survival_fit(result2)
   above70 <- cohort %>% filter(person_age >=70); result3 <- matching_psm(above70); survival_fit(result3)
-	```
+
+```
 
 4. Upload the file ```outputFolder_<HospitalName>.zip``` in the output folder to the study coordinator:
 
