@@ -15,8 +15,8 @@
 			and d.drug_exposure_start_date <= c.index_after_180days
 			);
  IF OBJECT_ID('AdtVsNonadtPc_Drug_Use_@list', 'U') IS NOT NULL
-  	drop 	table @target_database_schema.AdtVsNonadtPc_Drug_@list;
-	create 	table @target_database_schema.AdtVsNonadtPc_Drug_@list as(
+  	drop 	table @target_database_schema.AdtVsNonadtPc_Drug_Use_@list;
+	create 	table @target_database_schema.AdtVsNonadtPc_Drug_Use_@list as(
 			select distinct d.person_id, case when d.drug_exposure_start_date is not null then 1 else 0 end as @list
 			from @target_database_schema.AdtVsNonadtPc_@list d
 			);

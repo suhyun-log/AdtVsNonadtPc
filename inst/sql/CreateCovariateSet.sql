@@ -1,5 +1,5 @@
  IF OBJECT_ID('@target_database_schema.AdtVsNonadtPc_COHORT', 'U') IS NOT NULL
- DROP TABLE @target_database_schema.AdtVsNonadtPc_COHORT
+ DROP TABLE @target_database_schema.AdtVsNonadtPc_COHORT;
  CREATE TABLE @target_database_schema.AdtVsNonadtPc_COHORT AS(
 	SELECT a.*, 
 	b.person_age, b.age_group, k.cci, CASE  WHEN k.cci >= 2 AND k.cci <= 3 THEN 1
