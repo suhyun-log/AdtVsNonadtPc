@@ -36,6 +36,7 @@ ParallelLogger::addDefaultFileLogger(file.path(outputFolder, "log.txt"))
 on.exit(ParallelLogger::unregisterLogger("DEFAULT"))
 # DB CONNECTION
 connection <- DatabaseConnector::connect(connectionDetails = connectionDetails)
+
 # SQL
 source(file.path(getwd(), "R/CreateCohortTables.R"))
 source(file.path(getwd(), "R/CreateCohortSets.R"))

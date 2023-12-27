@@ -1,9 +1,9 @@
 ######################################## Load data & pkg ########################################
-sql <- {"SELECT * FROM @target_database_schema.AdtVsNonadtPc_ADT_PC_PRE_COHORT;"}
+sql <- {"SELECT * FROM @target_database_schema.AdtVsNonadtPc_COHORT;"}
 sql <- translate(render(sql, 
                         oracleTempSchema = oracleTempSchema,
-                        target_database_schema = target_database_schema),targetdialect = my_dbms)
-cohort <- querySql(connection, sql)
+                        target_database_schema = target_database_schema),targetDialect = my_dbms)[1]
+cohort <- querySql(connection, as.character(sql))
 ######################################## Data preprocessing ########################################
 cohort$index_date <- substr(cohort$index_date, 1, 10)
 cohort <- cohort %>% mutate_all(~ifelse(. == "NULL", 0, .))

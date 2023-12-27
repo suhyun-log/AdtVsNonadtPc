@@ -13,7 +13,7 @@ for (i in c(1,2,3)) {
                            target_cohort_id = cohortsToCreate$cohortId[i],
                            medianDate = median,
                            target = target)
-  sql <- SqlRender::translate(sql, targetDialect = attr(connection, "dbms"))$sql
+  sql <- SqlRender::translate(sql, targetDialect = attr(connection, "dbms"))[1]
   ParallelLogger::logInfo("Constructing concept information on server")
   DatabaseConnector::executeSql(connection, sql)
 }
@@ -24,7 +24,7 @@ sql <- SqlRender::render(sql,
                             oracleTempSchema = oracleTempSchema,
                             target_database_schema = target_database_schema,
                             AdtVsNonadtPc_COHORT_date = "AdtVsNonadtPc_COHORT_date")
-sql <- SqlRender::translateSql(sql, targetDialect = attr(connection, "dbms"))$sql
+sql <- SqlRender::translate(sql, targetDialect = attr(connection, "dbms"))[1]
 ParallelLogger::logInfo("Constructing concept information on server")
 DatabaseConnector::executeSql(connection, sql, progressBar = TRUE, reportOverallTime = TRUE)
 ######################################## Create cohort Outcomes #######################################
@@ -38,7 +38,7 @@ for (i in 3:7) {
                            cohortId = cohortsToCreate$cohortId[i],
                            AdtVsNonadtPc_COHORT_date = "AdtVsNonadtPc_COHORT_date",
                            target_database_schema = target_database_schema)
-  sql <- SqlRender::translateSql(sql, targetDialect = attr(connection, "dbms"))$sql
+  sql <- SqlRender::translate(sql, targetDialect = attr(connection, "dbms"))[1]
   ParallelLogger::logInfo("Constructing concept information on server")
   DatabaseConnector::executeSql(connection, sql, progressBar = TRUE, reportOverallTime = TRUE)
 }
@@ -48,6 +48,6 @@ sql <- SqlRender::readSql(sql)
 sql <- SqlRender::render(sql,
                          oracleTempSchema = oracleTempSchema,
                          target_database_schema = target_database_schema)
-sql <- SqlRender::translateSql(sql, targetDialect = attr(connection, "dbms"))$sql
+sql <- SqlRender::translate(sql, targetDialect = attr(connection, "dbms"))[1]
 ParallelLogger::logInfo("Constructing concept information on server")
 DatabaseConnector::executeSql(connection, sql, progressBar = TRUE, reportOverallTime = TRUE)

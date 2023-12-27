@@ -6,7 +6,7 @@ sql <- SqlRender::render(sql,
                             create_cohort_table=TRUE,
                             cohort_database_schema=target_database_schema,
                             cohort_table="AdtVsNonadtPc")
-sql <- SqlRender::translate(sql, targetDialect = attr(connection, "dbms"))$sql
+sql <- SqlRender::translate(sql, targetDialect = attr(connection, "dbms"))[1]
 ParallelLogger::logInfo("Constructing concept information on server")
 DatabaseConnector::executeSql(connection, sql, progressBar = TRUE, reportOverallTime = TRUE)
 ######################################## Create cohorts ########################################
@@ -21,7 +21,7 @@ for (i in 1:nrow(cohortsToCreate)) {
                            target_database_schema = target_database_schema,
                            target_cohort_table = "AdtVsNonadtPc",
                            target_cohort_id = cohortsToCreate$cohortId[i])
-  sql <- SqlRender::translate(sql, targetDialect = attr(connection, "dbms"))$sql
+  sql <- SqlRender::translate(sql, targetDialect = attr(connection, "dbms"))[1]
   DatabaseConnector::executeSql(connection, sql)
 }
 # Fetch cohort counts:
@@ -30,8 +30,8 @@ sql <- SqlRender::render(sql,
                          oracleTempSchema = oracleTempSchema,
                          cohort_database_schema = target_database_schema,
                          cohort_table = "AdtVsNonadtPc")
-sql <- SqlRender::translate(sql, targetDialect = attr(connection, "dbms"))$sql
-counts <- DatabaseConnector::querySql(connection, sql)
+sql <- SqlRender::translate(sql, targetDialect = attr(connection, "dbms"))[1]
+counts <- DatabaseConnector::querySql(connection, as.character(sql))
 names(counts) <- SqlRender::snakeCaseToCamelCase(names(counts))
 counts <- merge(counts, data.frame(cohortDefinitionId = cohortsToCreate$cohortId,
                                    cohortName  = cohortsToCreate$name))
@@ -45,6 +45,6 @@ WHERE a.cohort_start_date <= b.cohort_start_date;"
 sql <- translate(render(sql,
                         oracleTempSchema = oracleTempSchema,
                         target_database_schema = target_database_schema), targetDialect = my_dbms)
-sql <- SqlRender::translateSql(sql, targetDialect = attr(connection, "dbms"))$sql
-dates <- querySql(connection, sql) 
+sql <- SqlRender::translate(sql, targetDialect = attr(connection, "dbms"))[1]
+dates <- querySql(connection, as.character(sql))
 medianDate <- median(dates[,2])
