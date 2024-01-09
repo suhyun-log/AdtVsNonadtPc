@@ -50,3 +50,6 @@ rsconnect/
 .DS_Store
 
 *.jar
+
+
+outputFolder/
