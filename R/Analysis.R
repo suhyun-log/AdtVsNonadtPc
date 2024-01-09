@@ -5,8 +5,15 @@ sql <- translate(render(sql,
                         target_database_schema = target_database_schema),targetDialect = my_dbms)[1]
 cohort <- querySql(connection, as.character(sql))
 ######################################## Data preprocessing ########################################
+colnames(cohort) <- tolower(colnames(cohort))
+pathToCsv <-  file.path(getwd(), "inst", "settings", "CohortsToCreate.csv")
+cohortsToCreate <- read.csv(pathToCsv)
+outcome_date <- tolower(paste0("outcome_", cohortsToCreate$tableName[3:7], "_date"))
+outcome_date <- c(outcome_date, "index_date" )
+cohort[, c(outcome_date)] <- sapply(cohort[, c(outcome_date)], as.character)
 cohort$index_date <- substr(cohort$index_date, 1, 10)
 cohort <- cohort %>% mutate_all(~ifelse(. == "NULL", 0, .))
+cohort <- cohort %>% mutate_all(~ifelse(. == "NA", 0, .))
 cohort$cci <- as.numeric(cohort$cci)
 cohort[, c("cci_group", "age_group")] <- sapply(cohort[, c("cci_group", "age_group")], as.numeric)
 outcome_time <- tolower(paste0("outcome_", cohortsToCreate$tableName[3:7], "_time"))
