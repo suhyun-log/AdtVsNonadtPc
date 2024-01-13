@@ -44,7 +44,7 @@ source(file.path(getwd(), "R/CreateCovariateSets.R"))
 #################################### Load data & pkg #####################################
 source(file.path(getwd(), "R/Analysis.R"))
 ######################################## Analysis ########################################
-whole <- cohort; result1 <- matching_psm(whole); survival_table1 <- survival_fit(result1)
+whole <- cohort; result1 <- matching_psm(whole); survival_fit(result1)
 #################################### Subgroup analysis ####################################
-under70 <- cohort %>% filter(person_age <70); result2 <- matching_psm(under70); survival_table2 <- survival_fit(result2)
-above70 <- cohort %>% filter(person_age >=70); result3 <- matching_psm(above70); survival_table3 <- survival_fit(result3)
+under70 <- cohort %>% filter(person_age <70); result2 <- matching_psm(under70); survival_fit(result2)
+above70 <- cohort %>% filter(person_age >=70); result3 <- matching_psm(above70); survival_fit(result3)

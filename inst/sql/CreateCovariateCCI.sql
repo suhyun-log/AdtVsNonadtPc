@@ -1,7 +1,7 @@
 IF OBJECT_ID('AdtVsNonadtPc_cci1', 'U') IS NOT NULL
 	drop 	table @target_database_schema.AdtVsNonadtPc_cci1; 
 CREATE TABLE @target_database_schema.AdtVsNonadtPc_cci1 AS
-select c.*, o.kcd_code_column, o.condition_start_date 
+select c.*, o.ext_cond_source_value_kcd, o.condition_start_date 
 from @target_database_schema.AdtVsNonadtPc_COHORT_date  c
 left join @cdm_database_schema.condition_occurrence o
 on c.person_id = o.person_id
