@@ -7,7 +7,7 @@
                                           WHEN k.cci >= 6 THEN 3
                                           ELSE NULL END AS cci_group,
 	c.hypertension, d.diabetes, e.dyslipidemia, f.cardiovascular_disease, g.peripheral_vascular_disease, h.copd, i.asthma, j.liver_disease,
-  n.statin, o.antiplatelet, p.anticoagulant, q.anticholinergic, r.antidepressant, s.antipsychotics, t.urin_anticholinergic, u.urin_antidepressant,
+  n.statin, o.antiplatelet, p.anticoagulant, q.anticholinergic, r.antidepressant, s.antipsychotics, t.urine_anticholinergic, u.urine_antidepressant,
 	m.metastatic_cancer
 	FROM @target_database_schema.AdtVsNonadtPc_COHORT_outcome a
 	LEFT JOIN @target_database_schema.AdtVsNonadtPc_AGE b
