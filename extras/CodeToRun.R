@@ -41,6 +41,7 @@ connection <- DatabaseConnector::connect(connectionDetails = connectionDetails)
 source(file.path(getwd(), "R/CreateCohortTables.R"))
 source(file.path(getwd(), "R/CreateCohortSets.R"))
 source(file.path(getwd(), "R/CreateCovariateSets.R"))
+source(file.path(getwd(), "R/CountPC.R"))
 #################################### Load data & pkg #####################################
 source(file.path(getwd(), "R/Analysis.R"))
 ######################################## Analysis ########################################
