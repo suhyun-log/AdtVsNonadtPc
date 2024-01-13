@@ -37,7 +37,7 @@ on.exit(ParallelLogger::unregisterLogger("DEFAULT"))
 # DB CONNECTION
 connection <- DatabaseConnector::connect(connectionDetails = connectionDetails)
 
-# SQL
+# QUERY SQL
 source(file.path(getwd(), "R/CreateCohortTables.R"))
 source(file.path(getwd(), "R/CreateCohortSets.R"))
 source(file.path(getwd(), "R/CreateCovariateSets.R"))
