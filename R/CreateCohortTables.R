@@ -4,7 +4,7 @@ sql <- SqlRender::readSql(sql)
 sql <- SqlRender::render(sql,
                             oracleTempSchema = oracleTempSchema,
                             create_cohort_table=TRUE,
-                            cohort_database_schema=target_database_schema,
+                            target_database_schema=target_database_schema,
                             cohort_table="AdtVsNonadtPc")
 sql <- SqlRender::translate(sql, targetDialect = attr(connection, "dbms"))[1]
 ParallelLogger::logInfo("Constructing concept information on server")
